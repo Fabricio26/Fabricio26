@@ -1,5 +1,7 @@
 <h1 align="center"> Z.e auto ZIP </h1>
 
+![icone Z.e](https://github.com/Fabricio26/Z.e-auto-ZIP/blob/main/icone_Z41_icon.ico)
+
 Z.e é um executável para compactar arquivos e enviar por email.
 
 
