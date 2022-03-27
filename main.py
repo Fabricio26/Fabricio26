@@ -15,7 +15,9 @@ pasta = path.join(path.expanduser("~"), "Desktop\\Arquivos\\")
 limite = 20971520
 
 class EnviarEmail:
+
     def __init__(self):
+        
         self.janela = tk.Tk()
 
         self.janela.title("ENVIAR EMAIL")
@@ -88,7 +90,6 @@ class EnviarEmail:
                 z.close()
 
                 EnviarEmail.escrever(self)
-    
 
         except:
 
@@ -137,6 +138,12 @@ class EnviarEmail:
 
     def verificar(self):
 
+        if not gma() == "0c:d2:92:b5:06:08":
+
+            messagebox.showwarning(message="EXECUTÁVEL NÃO PERMITIDO NESSA MÁQUINA")
+
+            exit()
+
         if not os.path.exists(pasta):
 
             messagebox.showwarning(message="Crie uma pasta na área de trabalho com nome (Arquivos)")
@@ -147,12 +154,6 @@ class EnviarEmail:
 
             os.chdir(str(pasta))
 
-        if not gma() == "0c:d2:92:b5:06:08":
-
-            messagebox.showwarning(message="EXECUTÁVEL NÃO PERMITIDO NESSA MÁQUINA")
-
-            exit()
-    
         if len(os.listdir(pasta)) == 0:                 
 
             messagebox.showinfo(message="Pasta vazia")
@@ -163,7 +164,8 @@ class EnviarEmail:
 
             if os.path.getsize(os.path.join(pasta, "anexos.zip")) > limite:
 
-                messagebox.showerror(message= """Arquivo nomeado (anexos) com o limite maior do permitido para:
+                messagebox.showerror(message= """
+                Arquivo nomeado (anexos) com o limite maior do permitido para:
                 envio por email""")
 
                 exit()
@@ -173,7 +175,7 @@ class EnviarEmail:
                 EnviarEmail.escrever(self)
 
     def erros(self):
-    
+
         if UnboundLocalError:
 
             messagebox.showerror(message="Arquivo com mesmo nome de anexo.zip ou .rar")
@@ -185,5 +187,5 @@ class EnviarEmail:
             messagebox.showerror(message= "Tentativa de anexar em Zip arquivo que já estava fechado")
 
             exit()
-
+        
 EnviarEmail()
